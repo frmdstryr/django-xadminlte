@@ -1,0 +1,36 @@
+{% extends base_template %}
+{% load i18n %}
+{% load url from future %}
+
+{% block extrastyle %}{{ block.super }}
+<style type="text/css">
+  .form-signout h2, .form-signout p{margin-bottom: 15px;}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="lockscreen-wrapper">
+  <div class="lockscreen-logo">
+    <a href="/">{% if current_app %}<b>{{current_app}}</b>{% else %}<b>xAdminLTE</b> dashboard{% endif %}</a>
+  </div>
+  <!-- User name -->
+  <div class="lockscreen-name"></div>
+  
+  <div class="text-center callout callout-success">{% trans "You have successfully been signed out." %}</div>
+  
+  <hr/>
+  
+  <a href="{% url 'xadmin:index' %}" class="btn btn-info btn-block">{% trans 'Return to sign in' %}</a>
+  
+  <div class="text-center"></br><p>- OR -</p></div>
+  
+   <a href="#" onclick="javascript:window.opener=null;window.open('','_self');window.close();" class="btn btn-block">{% trans 'Close Window' %}</a>  
+  
+  {% block logout_footer %}
+   <div class="lockscreen-footer text-center">
+    Copyright © 
+    All rights reserved
+  </div>
+  {% endblock %}
+</div>
+{% endblock %}

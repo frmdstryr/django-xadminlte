@@ -1,0 +1,97 @@
+{% extends base_template %}
+{% load i18n xadmin_tags %}
+{% load url from future %}
+{% load crispy_forms_tags %}
+
+{% block extrastyle %}{{ block.super }}
+<style type="text/css">
+  .login-page .alert-block{
+    padding: 0px;
+  }
+  .login-page .alert-block ul{
+    margin: 10px 15px;
+    padding-left: 0px;
+  }
+  .login-page .alert-block ul li{
+    list-style-type: none;
+  }
+</style>
+{% endblock %}
+
+{% block bodyclass %}login hold-transition login-page{% endblock %}
+
+{% block body %}
+<div class="login-box">
+  <div class="login-logo">
+    {% block login_logo %}<a href="/">{% if site_title %}<b>{{site_title}}</b>{% else %}<b>{% trans "xAdminLTE" %}</b> {% trans "dashboard" %}{% endif %}</a>{% endblock %}
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    {% block login_heading %}
+    <p class="login-box-msg">{% if title %}{{title}}{% else %}{% trans "Sign in to start your session" %}{% endif %}</p>
+    {% endblock %}
+    
+    <form action="" method="post" id="login-form">
+      {% csrf_token %}
+      {% block login_form %}
+      
+      {% view_block 'form_top' %}
+      <div class="form-group has-feedback">
+        <input class="form-control" id="id_username" maxlength="254" name="username" type="text" placeholder="{% trans "Username" %}">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      {% for error in form.username.errors %}
+        <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="text-danger help-block">{{ error }}</p>
+      {% endfor %}
+      
+      <div class="form-group has-feedback">
+        <input class="form-control" id="id_password" name="password" type="password" placeholder="{% trans "Password" %}">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      {% for error in form.password.errors %}
+        <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="text-danger help-block">{{ error }}</p>
+      {% endfor %}
+      
+      <input type="hidden" name="this_is_the_login_form" value="1" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      
+      {% include 'bootstrap3/errors.html' %}
+      
+      <hr/>
+      
+      <div class="row">
+        <div class="col-xs-8">
+          {% if remember_me %}
+          <div class="checkbox icheck">
+            <label>
+              <div aria-disabled="false" aria-checked="false" style="position: relative;" class="icheckbox_square-blue"><input style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" type="checkbox"><ins style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" class="iCheck-helper"></ins></div> Remember Me
+            </label>
+          </div>
+          {% endif %}
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Sign In' %}</button>
+        </div>
+        <!-- /.col -->
+       </div>
+      {% view_block 'form_bottom' %}
+      
+    {% endblock %}
+    </form>
+    
+    {% block login_links %}
+    <!-- /.social-auth-links -->
+    {% endblock %}
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+
+{% block login_footer %}
+{% endblock %} 
+
+<script type="text/javascript">
+document.getElementById('id_username').focus()
+</script>
+{% endblock %}
