@@ -1,5 +1,5 @@
 # django-xadminlte
-AdminLTE theme and plugins for django-xadmin 
+Drop in AdminLTE theme and plugins for django-xadmin 
 
 Based on:
 
@@ -8,6 +8,10 @@ Based on:
 - Django 1.8.6
 - Django crispy forms 1.5.2
 
+# Usage
+
+1. Copy to where your django apps are installed
+2. Include 'xadminlte' in your installed apps _before_ 'xadmin'
 
 # Screenshots
 ![login](https://lh3.googleusercontent.com/GikibhUn1XrXKgS5cUKVH1HSQa-94lk0_V6N1sJWSycCOmqg5twAcRykFGeAX0vC3jIibd8Bq-iqLXrAskmQXGA6PlesjvfG4BCVHrkXOnIrqJbPegMZw6QArYdNvacltsbSZqhp)
