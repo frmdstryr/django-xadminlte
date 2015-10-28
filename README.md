@@ -5,7 +5,7 @@ Based on:
 
 - https://github.com/sshwsfc/django-xadmin
 - https://github.com/almasaeed2010/AdminLTE
-- Django 1.8.6
+- Django 1.8
 - Django crispy forms 1.5.2
 
 # Usage
