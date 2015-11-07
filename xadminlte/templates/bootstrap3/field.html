@@ -9,7 +9,6 @@
                 {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
             </label>
         {% endif %}
-
         <div class="controls {{ field_class }}{% if field|is_checkbox %}checkbox{% endif %}">
             {% if field|is_checkbox %}
                 <label for="{{ field.id_for_label }}" class="checkbox {% if field.field.required %} requiredField{% endif %}">
