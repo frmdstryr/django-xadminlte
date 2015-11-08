@@ -1,32 +1,44 @@
 {% extends "xadmin/edit_inline/base.html" %}
 {% load i18n xadmin_tags crispy_forms_tags %}
 
-{% block box_content_class %}{{ block.super }} panel-group{% endblock box_content_class %}
+{% block box_content_class %}{{ block.super }} box-group{% endblock box_content_class %}
 
 {% block formset_form %}
-  <div class="formset-row row fieldset">
-    <div class="panel-heading">
-      {% if formset.formset.can_delete %}
-        <a class="delete-row pull-right"><i class="fa fa-times"></i></a>
-      {% endif %}
-      <b>{{ formset.opts.verbose_name|title }}:</b>&nbsp;{% if fs.instance.pk %}{{ fs.instance }}{% else %}#<span class="formset-num">{{ forloop.counter }}</span>{% endif %}
+  <div class="formset-row fieldset panel box">
+     <div class="box-header with-border">
+        <h5>
+         {% if formset.formset.can_delete %}
+           <a class="delete-row pull-right"><i class="fa fa-times"></i></a>
+         {% endif %}
+         <b>{{ formset.opts.verbose_name|title }}</b>:&nbsp;{% if fs.instance.pk %}{{ fs.instance }}{% else %}#<span class="formset-num">{{ forloop.counter }}</span>{% endif %}
+        </h5>
     </div>
-    <div class="formset-form">
-      {% crispy fs formset.formset.helper %}
+    <div style="" aria-expanded="true" class="panel-collapse collapse in">
+        <div class="box-body">
+           <div class="formset-form">
+             {% crispy fs formset.formset.helper %}
+           </div>
+        </div>
     </div>
   </div>
 {% endblock formset_form %}
 
 {% block formset_empty %}
-  <div class="formset-row row fieldset">
-    <div class="">
-      {% if formset.formset.can_delete %}
-        <a class="delete-row pull-right"><i class="fa fa-times"></i></a>
-      {% endif %}
-      <b>{{ formset.opts.verbose_name|title }}:</b>&nbsp;#<span class="formset-num"></span>
+  <div class="formset-row fieldset panel box">
+    <div class="box-header with-border">
+        <h5>
+          {% if formset.formset.can_delete %}
+            <a class="delete-row pull-right"><i class="fa fa-times"></i></a>
+          {% endif %}
+          <b>{{ formset.opts.verbose_name|title }}</b>:&nbsp;#<span class="formset-num"></span>
+        </h5>
     </div>
-    <div class="formset-form">
-      {% crispy formset.formset.empty_form formset.formset.helper %}
+    <div style="" aria-expanded="true" class="panel-collapse collapse in">
+        <div class="box-body">
+           <div class="formset-form">
+             {% crispy formset.formset.empty_form formset.formset.helper %}
+           </div>
+        </div>
     </div>
   </div>
 {% endblock formset_empty %}
