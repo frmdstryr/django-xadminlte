@@ -78,91 +78,92 @@
       {% view_block 'pagination' 'small' %}
     </ul>   
    </div>
-  <form id="changelist-form" action="" method="post"{% view_block 'result_list_form' %}>{% csrf_token %}
-   <div class="box-body results table-responsive no-padding">
-    {% if results %}
-    {% block results_grid %}
-    <table class="table table-bordered table-striped table-hover">
-      {% block results_grid_head %}
-      <thead>
-        <tr>{% for o in result_headers.cells %}
-          <th {{o.tagattrs}}>
-            {% if o.btns %}
-              <div class="pull-right">
-                {% for b in o.btns %}
-                  {{b|safe}}
-                {% endfor %}
-              </div>
-            {% endif %}
-            {% if o.menus %}
-              <div class="dropdown pull-left">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  {{ o.label }}
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  {% for m in o.menus %}
-                    {{m|safe}}
-                  {% endfor %}
-                </ul>
-              </div>
-            {% else %}
-              {{ o.label }}
-            {% endif %}
-          </th>{% endfor %}
-        </tr>
-        {% view_block 'result_head' %}
-      </thead>
-      {% endblock results_grid_head %}
-      {% block results_grid_body %}
-      <tbody>
-      {% for row in results %}
-        <tr class="grid-item{% if row.css_class %} {{row.css_class}}{%endif%}">{% for o in row.cells %}
-          <td {{o.tagattrs}}>
-            {% if o.btns %}
-              <div class="btn-group pull-right">
-                {% for b in o.btns %}
-                  {{b|safe}}
-                {% endfor %}
-              </div>
-            {% endif %}
-            {% if o.menus %}
-              <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  {{ o.label }}
-                </a>
-                <ul class="dropdown-menu">
-                  {% for m in o.menus %}
-                    {{m|safe}}
-                  {% endfor %}
-                </ul>
-              </div>
-            {% else %}
-              {{ o.label }}
-            {% endif %}
-          </td>
-        {% endfor %}</tr>
-        {% view_block 'result_row' row %}
-      {% endfor %}
-      </tbody>
-      {% endblock results_grid_body %}
-     </table>
-     {% endblock results_grid %}
-     {% else %}
-     <table class="table table-bordered">
-        <tbody>
-        <tr><td>{% trans "Empty list" %}</td></tr>
-        </tbody>
-     </table>
-     {% endif %}
+   
+   <form id="changelist-form" action="" method="post"{% view_block 'result_list_form' %}>{% csrf_token %}
+    <div class="box-body results table-responsive no-padding">
+     {% if results %}
+     {% block results_grid %}
+     <table class="table table-bordered table-striped table-hover">
+       {% block results_grid_head %}
+       <thead>
+         <tr>{% for o in result_headers.cells %}
+           <th {{o.tagattrs}}>
+             {% if o.btns %}
+               <div class="pull-right">
+                 {% for b in o.btns %}
+                   {{b|safe}}
+                 {% endfor %}
+               </div>
+             {% endif %}
+             {% if o.menus %}
+               <div class="dropdown pull-left">
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                   {{ o.label }}
+                 </a>
+                 <ul class="dropdown-menu" role="menu">
+                   {% for m in o.menus %}
+                     {{m|safe}}
+                   {% endfor %}
+                 </ul>
+               </div>
+             {% else %}
+               {{ o.label }}
+             {% endif %}
+           </th>{% endfor %}
+         </tr>
+         {% view_block 'result_head' %}
+       </thead>
+       {% endblock results_grid_head %}
+       {% block results_grid_body %}
+       <tbody>
+       {% for row in results %}
+         <tr class="grid-item{% if row.css_class %} {{row.css_class}}{%endif%}">{% for o in row.cells %}
+           <td {{o.tagattrs}}>
+             {% if o.btns %}
+               <div class="btn-group pull-right">
+                 {% for b in o.btns %}
+                   {{b|safe}}
+                 {% endfor %}
+               </div>
+             {% endif %}
+             {% if o.menus %}
+               <div class="dropdown">
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                   {{ o.label }}
+                 </a>
+                 <ul class="dropdown-menu">
+                   {% for m in o.menus %}
+                     {{m|safe}}
+                   {% endfor %}
+                 </ul>
+               </div>
+             {% else %}
+               {{ o.label }}
+             {% endif %}
+           </td>
+         {% endfor %}</tr>
+         {% view_block 'result_row' row %}
+       {% endfor %}
+       </tbody>
+       {% endblock results_grid_body %}
+      </table>
+      {% endblock results_grid %}
+      {% else %}
+      <table class="table table-bordered">
+         <tbody>
+         <tr><td>{% trans "Empty list" %}</td></tr>
+         </tbody>
+      </table>
+      {% endif %}
+      
      
-    
-   </div>
-   <div class="box-footer">
-    {% view_block 'results_bottom' %}
-     <ul class="pagination pagination-sm no-margin">
-          {% view_block 'pagination' %}
-      </ul> 
-   </div>
+    </div>
+    <div class="box-footer">
+     {% view_block 'results_bottom' %}
+      <ul class="pagination pagination-sm no-margin">
+           {% view_block 'pagination' %}
+       </ul> 
+    </div>
    </form>
   </div>
   
