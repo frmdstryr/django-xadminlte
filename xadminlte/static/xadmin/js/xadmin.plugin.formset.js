@@ -67,7 +67,7 @@
             if(template.is('textarea')){
                 template = $(template.val());
             }else if(template.is('script')){
-                template = $($.parseHTML(template.html()));
+                template = $($.parseHTML(template.html().trim()));
             }
             template.removeAttr('id');
             if(template.data("replace-id")){
