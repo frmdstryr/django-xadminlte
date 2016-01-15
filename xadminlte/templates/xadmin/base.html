@@ -20,7 +20,7 @@
   {% vendor 'font-awesome.css' 'xadmin.main.css' 'xadmin.plugins.css' 'xadmin.responsive.css' %}
   {{ media.css }}
   {% block extrastyle %}{% endblock %}
-  {% vendor 'jquery.js' 'xadmin.main.js' %}
+  {% vendor 'jquery.js' %}
   {% url 'xadmin:index' as indexurl %}
   <script type="text/javascript">
     window.__admin_media_prefix__ = "{% filter escapejs %}{% static "xadmin/" %}{% endfilter %}";
@@ -37,7 +37,7 @@
     {% block content %}{% endblock content %}
     </div>
   {% endblock body %}
-  {% vendor 'jquery-ui-sortable.js' 'bootstrap.js'  'xadmin.responsive.js' %}
+  {% vendor 'jquery-ui-sortable.js' 'bootstrap.js'  'xadmin.main.js' 'xadmin.responsive.js' %}
   <script src="{% static "xadminlte/dist/js/app.min.js" %}"></script>
   {{ media.js }}
   {% block extrabody %}{% endblock %}
