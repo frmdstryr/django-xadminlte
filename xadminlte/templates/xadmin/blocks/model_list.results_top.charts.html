@@ -1,0 +1,23 @@
+{% extends "xadmin/includes/box.html" %}
+{% load i18n xadmin_tags %}
+{% block box_class %}nav-tabs-custom{% endblock box_class %}
+{% block box_header %}
+  <ul class="nav nav-tabs chart-tab">
+    <li class="panel-title header"><i class="fa fa-bar-chart-o"></i> {% trans "Charts" %}</li>
+    {% for c in charts %}
+    <li{% if forloop.first%} class="active"{% endif %}><a href="#chart-{{c.name}}" data-toggle="tab">{{c.title}}</a></li>
+    {% endfor %}
+    {% if widget.dashboard.widget_customiz %}<li><button class="btn btn-box-tool"><i class='icon fa fa-wrench pull-right' data-toggle="modal" data-target="#{{ widget_id }}-opts-form"></i></button></li>{% endif %}
+	<li class="pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-chevron-up chevron"></i></button></li>
+	{% block box_tools %}{% endblock box_tools %}
+  </ul>
+{% endblock box_header %}
+{% block box_content_class %}nopadding{% endblock box_content_class %}
+{% block box_content %}
+  <div class="tab-content">
+    {% for c in charts %}
+    <div class="chart tab-pane{% if forloop.first%} active{% endif %}" id="chart-{{c.name}}" data-chart-url="{{c.url}}" 
+      style="height: 300px; margin:0px 5px; overflow: hidden;"></div>
+    {% endfor %}
+  </div>
+{% endblock box_content %}

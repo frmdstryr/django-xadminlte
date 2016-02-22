@@ -11,6 +11,10 @@ a { cursor: pointer;}
 	overflow: visible;
 }
 
+.nav-tabs-custom > .nav-tabs > li {
+    margin-bottom: 0px;
+}
+
 .popover{
   width: auto;
 }
