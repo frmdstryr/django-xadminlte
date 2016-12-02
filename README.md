@@ -12,7 +12,8 @@ Based on:
 
 1. Copy the xadminlte app to your django project
 2. Download AdminLTE and extract it to 'static/xadminlte' (or update the links in base.html)
-3. Include 'xadminlte' in your installed apps _before_ 'xadmin'
+3. Download fontawesome, extract it to 'static/xadminlte/plugins/fontawesome-x.x.x', and update version numbers in `xadminlte/vendors.py`
+4. Include 'xadminlte' in your installed apps _before_ 'xadmin'
 
 # Screenshots
 ![login](https://lh3.googleusercontent.com/GikibhUn1XrXKgS5cUKVH1HSQa-94lk0_V6N1sJWSycCOmqg5twAcRykFGeAX0vC3jIibd8Bq-iqLXrAskmQXGA6PlesjvfG4BCVHrkXOnIrqJbPegMZw6QArYdNvacltsbSZqhp)
